@@ -1,0 +1,56 @@
+<web-app version="3.0"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee  
+               http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+
+  <servlet>
+    <servlet-name>proyectoservlet2</servlet-name>
+    <servlet-class>ServletPackage.HTMLServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>proyectoservlet2</servlet-name>
+    <url-pattern>/servlet</url-pattern>
+  </servlet-mapping>
+  
+ 
+   <context-param>
+    <param-name>HORARIO</param-name>
+    <param-value>TRUE</param-value>
+  	</context-param>
+  
+  	<context-param>
+    <param-name>USER</param-name>
+    <param-value>TATA</param-value>
+	</context-param>
+	
+	<context-param>
+    <param-name>LOGIN</param-name>
+    <param-value>1234</param-value>
+	</context-param>
+  
+  <filter>
+    <filter-name>LogFilter</filter-name>
+    <filter-class>
+        ServletPackage.LogFilter
+    </filter-class>
+    <init-param>
+        <param-name>FiltroTrue</param-name>
+        <param-value>Este horaio es permitido...</param-value>
+    </init-param>
+        <init-param>
+        <param-name>FiltroFalse</param-name>
+        <param-value>Este horaio NO es permitido...</param-value>
+    </init-param>
+</filter>
+<filter-mapping>
+    <filter-name>LogFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+  
+  <listener>
+    <listener-class>ServletPackage.MyServletRequestListener</listener-class>
+</listener>
+
+</web-app>
